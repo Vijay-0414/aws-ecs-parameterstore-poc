@@ -24,10 +24,13 @@
     </properties>
 
     <dependencies>
+
+        <!-- Web server (REQUIRED to keep ECS task running) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
