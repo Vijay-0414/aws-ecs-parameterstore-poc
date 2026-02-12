@@ -8,10 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication {
 
-    @Value("${db.username}")
+    // These will be injected ONLY from environment variables
+    @Value("${DB_USERNAME:}")
     private String dbUsername;
 
-    @Value("${db.password}")
+    @Value("${DB_PASSWORD:}")
     private String dbPassword;
 
     public static void main(String[] args) {
@@ -20,10 +21,14 @@ public class DemoApplication {
 
     @PostConstruct
     public void checkSecrets() {
-        if (dbUsername != null && dbPassword != null) {
-            System.out.println("✅ Secrets loaded successfully");
-        } else {
+
+        if (dbUsername == null || dbUsername.isBlank()
+                || dbPassword == null || dbPassword.isBlank()) {
+
             System.out.println("❌ Secrets missing");
+
+        } else {
+            System.out.println("✅ Secrets loaded successfully");
         }
     }
 }
