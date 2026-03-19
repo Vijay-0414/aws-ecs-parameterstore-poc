@@ -13,7 +13,7 @@ public class TestController {
         this.dbConfig = dbConfig;
     }
 
-    @GetMapping("/test")
+    @GetMapping("/paratest")
     public String test() {
         return "Username: " + dbConfig.getUsername() +
                " | Password: " + dbConfig.getPassword();
